@@ -23,7 +23,7 @@ public class User implements Serializable {
 	private Integer idade;
 	private Boolean ativo;
 	
-	private User() {
+	public User() {
 	}
 
 	public User(Long id, String nome, String sobrenome, String email, Integer idade, Boolean ativo) {
