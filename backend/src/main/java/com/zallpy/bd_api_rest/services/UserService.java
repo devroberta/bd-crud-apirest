@@ -13,7 +13,10 @@ import com.zallpy.bd_api_rest.entities.User;
 import com.zallpy.bd_api_rest.repositories.UserRepository;
 import com.zallpy.bd_api_rest.services.exceptions.ResourceNotFoundException;
 
+import lombok.extern.java.Log;
+
 @Service
+@Log
 public class UserService {
 	
 	@Autowired
