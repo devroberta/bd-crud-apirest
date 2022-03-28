@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.zallpy.bd_api_rest.dto.UserDTO;
 import com.zallpy.bd_api_rest.entities.User;
 import com.zallpy.bd_api_rest.services.UserService;
 
@@ -30,12 +31,12 @@ public class UserResource {
 	private UserService service;
 	
 	@GetMapping
-	public ResponseEntity<List<User>> findAll() {
-		List<User> list = service.findAll();
+	public ResponseEntity<List<UserDTO>> findAll() {
+		List<UserDTO> list = service.findAll();
 		if(list.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} else {
-			for(User user : list) {
+			for(UserDTO user : list) {
 				long id = user.getId();
 				user.add(linkTo(methodOn(UserResource.class).findById(id)).withSelfRel());
 			}
@@ -44,8 +45,8 @@ public class UserResource {
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<User> findById(@PathVariable Long id) {
-		User obj = service.findById(id);
+	public ResponseEntity<UserDTO> findById(@PathVariable Long id) {
+		UserDTO obj = service.findById(id);
 		if(obj.equals(null)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} else {
@@ -55,9 +56,14 @@ public class UserResource {
 	}
 	
 	@PostMapping
-	public ResponseEntity<User> insert(@RequestBody User obj) {
+	public ResponseEntity<UserDTO> insert(@RequestBody UserDTO obj) {
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+		if(obj.equals(null)) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		} else {
+			obj.add(linkTo(methodOn(UserResource.class).findAll()).withRel("Lista de Usuários:"));
+		}
 		return ResponseEntity.created(uri).body(obj);
 	}
 	
@@ -68,8 +74,13 @@ public class UserResource {
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User obj) {
+	public ResponseEntity<UserDTO> update(@PathVariable Long id, @RequestBody UserDTO obj) {
 		obj = service.update(id, obj);
+		if(obj.equals(null)) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		} else {
+			obj.add(linkTo(methodOn(UserResource.class).findAll()).withRel("Lista de Usuários:"));
+		}
 		return ResponseEntity.ok().body(obj);
 	}
 }
