@@ -32,7 +32,7 @@ public class UserService {
 	@Transactional(readOnly = true)
 	public UserDTO findById(Long id) {
 		Optional<User> obj = repository.findById(id);
-		User entity = obj.orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado."));
+		User entity = obj.orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado."));
 		return new UserDTO(entity);
 	}
 
@@ -68,7 +68,7 @@ public class UserService {
 			entity = repository.save(entity);
 			return new UserDTO(entity);
 		} catch (EntityNotFoundException e) {
-			throw new ResourceNotFoundException("Id não encontrado " + id);
+			throw new ResourceNotFoundException(id);
 		}
 	}
 
