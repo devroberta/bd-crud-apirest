@@ -1,0 +1,10 @@
+INSERT INTO tb_user(ativo, email, idade, nome, sobrenome) VALUES (true, 'anamaria@gmail.com', 38, 'Ana Maria', 'de Oliveira');
+INSERT INTO tb_user(ativo, email, idade, nome, sobrenome) VALUES (true, 'josesilva@gmail.com', 42, 'Jose', 'Silva');
+INSERT INTO tb_user(ativo, email, idade, nome, sobrenome) VALUES (true, 'joaomoraes@gmail.com', 40, 'Joao', 'Moraes');
+INSERT INTO tb_user(ativo, email, idade, nome, sobrenome) VALUES (true, 'antoniobrasil@gmail.com', 35, 'Antonio', 'Brasil');
+INSERT INTO tb_user(ativo, email, idade, nome, sobrenome) VALUES (true, 'carlostavares@gmail.com', 44, 'Carlos', 'Tavares');
+INSERT INTO tb_user(ativo, email, idade, nome, sobrenome) VALUES (true, 'anacarlateixeira@gmail.com', 37, 'Ana Carla', 'Teixeira');
+INSERT INTO tb_user(ativo, email, idade, nome, sobrenome) VALUES (true, 'jefersondocanto@gmail.com', 31, 'Jeferson', 'do Canto');
+INSERT INTO tb_user(ativo, email, idade, nome, sobrenome) VALUES (true, 'antoniamoreira@gmail.com', 48, 'Antonia', 'Moreira');
+INSERT INTO tb_user(ativo, email, idade, nome, sobrenome) VALUES (true, 'clarasoares@gmail.com', 33, 'Clara', 'Soares');
+INSERT INTO tb_user(ativo, email, idade, nome, sobrenome) VALUES (true, 'joanaavila@gmail.com', 29, 'Joana', 'Avila');
