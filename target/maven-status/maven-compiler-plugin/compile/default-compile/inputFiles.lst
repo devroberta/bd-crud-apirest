@@ -1,0 +1,9 @@
+/home/matheusrocha/Labs/bd-crud-apirest/backend/src/main/java/com/zallpy/bd_api_rest/dto/UserDTO.java
+/home/matheusrocha/Labs/bd-crud-apirest/backend/src/main/java/com/zallpy/bd_api_rest/resouces/exceptions/ResourceExceptionHandler.java
+/home/matheusrocha/Labs/bd-crud-apirest/backend/src/main/java/com/zallpy/bd_api_rest/repositories/UserRepository.java
+/home/matheusrocha/Labs/bd-crud-apirest/backend/src/main/java/com/zallpy/bd_api_rest/resouces/UserResource.java
+/home/matheusrocha/Labs/bd-crud-apirest/backend/src/main/java/com/zallpy/bd_api_rest/BdApiRestApplication.java
+/home/matheusrocha/Labs/bd-crud-apirest/backend/src/main/java/com/zallpy/bd_api_rest/services/UserService.java
+/home/matheusrocha/Labs/bd-crud-apirest/backend/src/main/java/com/zallpy/bd_api_rest/resouces/exceptions/StandardError.java
+/home/matheusrocha/Labs/bd-crud-apirest/backend/src/main/java/com/zallpy/bd_api_rest/services/exceptions/ResourceNotFoundException.java
+/home/matheusrocha/Labs/bd-crud-apirest/backend/src/main/java/com/zallpy/bd_api_rest/entities/User.java
