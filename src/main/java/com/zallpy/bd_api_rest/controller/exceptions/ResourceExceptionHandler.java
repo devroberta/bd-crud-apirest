@@ -1,4 +1,4 @@
-package com.zallpy.bd_api_rest.resouces.exceptions;
+package com.zallpy.bd_api_rest.controller.exceptions;
 
 import java.time.Instant;
 
