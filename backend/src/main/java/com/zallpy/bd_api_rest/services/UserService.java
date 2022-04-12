@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.zallpy.bd_api_rest.dto.UserFullDTO;
 import com.zallpy.bd_api_rest.entities.User;
 import com.zallpy.bd_api_rest.entities.UserDocuments;
+import com.zallpy.bd_api_rest.entities.enums.OrgaoEmissor;
 import com.zallpy.bd_api_rest.repositories.UserDocumentsRepository;
 import com.zallpy.bd_api_rest.repositories.UserRepository;
 import com.zallpy.bd_api_rest.services.exceptions.ResourceNotFoundException;
@@ -39,7 +40,9 @@ public class UserService {
 	}
 
 	public UserFullDTO insert(UserFullDTO obj) {
-		return new UserFullDTO(userRepository.save(new User(obj)), docRepository.save(new UserDocuments(obj)));
+		User user = new User(obj);
+		UserDocuments docsUser = new UserDocuments(obj.getId(), obj.getRg(), obj.getOrgaoEmissor(), obj.getEstado(), obj.getCpf(), obj.getSus(), user);
+		return new UserFullDTO(userRepository.save(user), docRepository.save(docsUser));
 	}
 
 	public void delete(Long id) {
@@ -53,8 +56,7 @@ public class UserService {
 	
 	public UserFullDTO update(UserFullDTO obj) {
 		try {
-			return new UserFullDTO(userRepository.save(userRepository.getOne(obj.getId())), 
-					docRepository.save(docRepository.getOne(obj.getId())));
+			return new UserFullDTO(userRepository.save(userRepository.getOne(obj.getId())));
 		} catch (EntityNotFoundException e) {
 			throw new ResourceNotFoundException(obj.getId());
 		}

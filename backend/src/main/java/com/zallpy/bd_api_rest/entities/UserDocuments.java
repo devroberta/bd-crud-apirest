@@ -54,6 +54,16 @@ public class UserDocuments implements Serializable {
 	@MapsId
 	private User docUser;
 	
+	public UserDocuments(Long id, String rg, OrgaoEmissor orgaoEmissor, States estado, String cpf, String sus) {
+		super();
+		this.id = id;
+		this.rg = rg;
+		this.orgaoEmissor = orgaoEmissor;
+		this.estado = estado;
+		this.cpf = cpf;
+		this.sus = sus;
+	}
+	
 	public UserDocuments(UserFullDTO dto) {
 		this.rg = dto.getRg();
 		this.orgaoEmissor = dto.getOrgaoEmissor();

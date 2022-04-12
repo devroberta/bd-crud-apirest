@@ -61,8 +61,8 @@ public class UserController {
 		return ResponseEntity.noContent().build();
 	}
 	
-	@PutMapping(value = "/{id}")
-	public ResponseEntity<UserFullDTO> update(@RequestBody UserFullDTO obj, @PathVariable Long id) {
+	@PutMapping
+	public ResponseEntity<UserFullDTO> update(@RequestBody UserFullDTO obj) {
 		obj = service.update(obj);
 		obj.add(linkTo(methodOn(UserController.class).findAll()).withRel("Lista de Usuários:"));
 		return ResponseEntity.ok().body(obj);
