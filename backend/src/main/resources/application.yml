@@ -1,5 +1,0 @@
-spring:
-  jpa:
-    open-in-view: true
-  profiles:
-    active: test
