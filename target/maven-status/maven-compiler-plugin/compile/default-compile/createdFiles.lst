@@ -1,0 +1,9 @@
+com/zallpy/bd_api_rest/services/exceptions/ResourceNotFoundException.class
+com/zallpy/bd_api_rest/BdApiRestApplication.class
+com/zallpy/bd_api_rest/entities/User.class
+com/zallpy/bd_api_rest/repositories/UserRepository.class
+com/zallpy/bd_api_rest/resouces/exceptions/StandardError.class
+com/zallpy/bd_api_rest/dto/UserDTO.class
+com/zallpy/bd_api_rest/resouces/UserResource.class
+com/zallpy/bd_api_rest/services/UserService.class
+com/zallpy/bd_api_rest/resouces/exceptions/ResourceExceptionHandler.class
