@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import com.zallpy.bd_api_rest.services.exceptions.ResourceNotFoundException;
 
 @ControllerAdvice
-public class ResourceExceptionHandler {
+public class ResourceExceptionHandler  {
 
 	@ExceptionHandler(ResourceNotFoundException.class)
 	public ResponseEntity<StandardError> resourceNotFound(ResourceNotFoundException e, HttpServletRequest request) {

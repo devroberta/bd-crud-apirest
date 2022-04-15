@@ -22,6 +22,8 @@ import com.zallpy.bd_api_rest.dto.UserFullDTO;
 import com.zallpy.bd_api_rest.services.UserService;
 import com.zallpy.bd_api_rest.services.exceptions.ResourceNotFoundException;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/users")
 public class UserController {
@@ -46,7 +48,7 @@ public class UserController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<UserFullDTO> insert(@RequestBody UserFullDTO obj) {
+	public ResponseEntity<UserFullDTO> insert(@Valid @RequestBody UserFullDTO obj) {
 		try {
 			obj = service.insert(obj);
 			return ResponseEntity.created(ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri()).body(obj);

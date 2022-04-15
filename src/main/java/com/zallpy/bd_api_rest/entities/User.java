@@ -23,9 +23,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "tb_user")
-@NoArgsConstructor 
-@AllArgsConstructor
-@EqualsAndHashCode
+@NoArgsConstructor
 @Getter 
 @Setter
 public class User extends RepresentationModel<User> implements Serializable {
@@ -69,5 +67,14 @@ public class User extends RepresentationModel<User> implements Serializable {
 		this.email = dto.getEmail();
 		this.idade = dto.getIdade();
 		this.ativo = dto.getAtivo();
+	}
+
+	public User updateData(UserFullDTO dto) {
+		this.nome = dto.getNome();
+		this.sobrenome = dto.getSobrenome();
+		this.email = dto.getEmail();
+		this.idade = dto.getIdade();
+		this.ativo = dto.getAtivo();
+		return this;
 	}
 }

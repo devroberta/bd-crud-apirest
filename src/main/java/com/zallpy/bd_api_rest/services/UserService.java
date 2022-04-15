@@ -1,9 +1,14 @@
 package com.zallpy.bd_api_rest.services;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
@@ -40,9 +45,10 @@ public class UserService {
 	}
 
 	public UserFullDTO insert(UserFullDTO obj) {
-		User user = new User(obj);
-		UserDocuments docsUser = new UserDocuments(obj.getId(), obj.getRg(), obj.getOrgaoEmissor(), obj.getEstado(), obj.getCpf(), obj.getSus(), user);
-		return new UserFullDTO(userRepository.save(user), docRepository.save(docsUser));
+				User user = new User(obj);
+				UserDocuments docsUser = new UserDocuments(obj.getId(), obj.getRg(), obj.getOrgaoEmissor(), obj.getEstado(), obj.getCpf(), obj.getSus(), user);
+				user.setDocuments(docRepository.save(docsUser));
+				return new UserFullDTO(userRepository.save(user));
 	}
 
 	public void delete(Long id) {
@@ -55,11 +61,18 @@ public class UserService {
 	}
 	
 	public UserFullDTO update(UserFullDTO obj) {
-		try {
-			return new UserFullDTO(userRepository.save(userRepository.getOne(obj.getId())));
-		} catch (EntityNotFoundException e) {
-			throw new ResourceNotFoundException(obj.getId());
-		}
+		return new UserFullDTO(userRepository.save(userRepository.findById(obj.getId())
+				.orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado.")).updateData(obj)));
 	}
 
+	public String validarCadastro(UserFullDTO obj) {
+		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+		Validator validator = factory.getValidator();
+		Set<ConstraintViolation<UserFullDTO>> constraintViolations = validator.validate(obj);
+		String msgError = "";
+		for (ConstraintViolation error : constraintViolations) {
+			msgError = error.getMessage();
+		}
+		return msgError;
+	}
 }

@@ -2,6 +2,7 @@ package com.zallpy.bd_api_rest.dto;
 
 import java.io.Serializable;
 
+import net.bytebuddy.implementation.bind.annotation.Empty;
 import org.springframework.hateoas.RepresentationModel;
 
 import com.zallpy.bd_api_rest.entities.User;
@@ -15,6 +16,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
@@ -24,16 +30,27 @@ public class UserFullDTO extends RepresentationModel<User> implements Serializab
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
+	@NotEmpty
 	private String nome;
+	@NotEmpty
 	private String sobrenome;
+	@NotEmpty
+	@Email
 	private String email;
+	@NotNull
 	private Integer idade;
+	@NotNull
 	private Boolean ativo;
-	
+
+	@NotEmpty
 	private String rg;
+	@NotNull
 	private OrgaoEmissor orgaoEmissor;
+	@NotNull
 	private States estado;
+	@NotEmpty
 	private String cpf;
+	@NotEmpty
 	private String sus;
 	
 	public UserFullDTO(User entity, UserDocuments userDocs) {
@@ -58,5 +75,11 @@ public class UserFullDTO extends RepresentationModel<User> implements Serializab
 		this.email = entity.getEmail();
 		this.idade = entity.getIdade();
 		this.ativo = entity.getAtivo();
+
+		this.rg = entity.getDocuments().getRg();
+		this.orgaoEmissor = entity.getDocuments().getOrgaoEmissor();
+		this.estado = entity.getDocuments().getEstado();
+		this.cpf = entity.getDocuments().getCpf();
+		this.sus = entity.getDocuments().getSus();
 	}
 }
