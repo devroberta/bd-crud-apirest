@@ -9,6 +9,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.ArrayList;
 import java.util.List;
 
+import com.zallpy.bd_api_rest.services.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
 import com.zallpy.bd_api_rest.dto.UserFullDTO;
-import com.zallpy.bd_api_rest.services.UserService;
 import com.zallpy.bd_api_rest.services.exceptions.ResourceNotFoundException;
 import com.zallpy.bd_api_rest.tests.Factory;
 
@@ -34,7 +34,7 @@ public class UserControllerTests {
 	private Long nonExistingId;
 	@BeforeEach	
 	void setUp() {
-		nonExistingId = 1L;
+		nonExistingId = 3L;
 		userDto = Factory.createUserDTO();
 		when(service.findAll()).thenReturn(new ArrayList<>(List.of(userDto)));
 		when(service.findById(anyLong())).thenReturn(userDto);

@@ -64,15 +64,4 @@ public class UserService {
 		return new UserFullDTO(userRepository.save(userRepository.findById(obj.getId())
 				.orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado.")).updateData(obj)));
 	}
-
-	public String validarCadastro(UserFullDTO obj) {
-		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-		Validator validator = factory.getValidator();
-		Set<ConstraintViolation<UserFullDTO>> constraintViolations = validator.validate(obj);
-		String msgError = "";
-		for (ConstraintViolation error : constraintViolations) {
-			msgError = error.getMessage();
-		}
-		return msgError;
-	}
 }

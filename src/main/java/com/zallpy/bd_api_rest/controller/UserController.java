@@ -5,6 +5,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import java.util.List;
 
+import com.zallpy.bd_api_rest.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,10 +17,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.zallpy.bd_api_rest.dto.UserFullDTO;
-import com.zallpy.bd_api_rest.services.UserService;
 import com.zallpy.bd_api_rest.services.exceptions.ResourceNotFoundException;
 
 import javax.validation.Valid;
@@ -64,7 +65,7 @@ public class UserController {
 	}
 	
 	@PutMapping
-	public ResponseEntity<UserFullDTO> update(@RequestBody UserFullDTO obj) {
+	public ResponseEntity<UserFullDTO> update(@Valid @RequestBody UserFullDTO obj) {
 		obj = service.update(obj);
 		obj.add(linkTo(methodOn(UserController.class).findAll()).withRel("Lista de Usuários:"));
 		return ResponseEntity.ok().body(obj);
