@@ -24,6 +24,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "tb_user")
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter 
 @Setter
 public class User extends RepresentationModel<User> implements Serializable {

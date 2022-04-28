@@ -8,11 +8,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="bd_api_rest" />
+        <module name="bd-crud-apirest" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="bd-crud-apirest" options="-parameters" />
       <module name="bd_api_rest" options="-parameters" />
     </option>
   </component>

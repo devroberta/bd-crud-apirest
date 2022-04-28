@@ -9,10 +9,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.ArrayList;
 import java.util.List;
 
+import com.zallpy.bd_api_rest.entities.User;
 import com.zallpy.bd_api_rest.services.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
@@ -22,6 +24,7 @@ import com.zallpy.bd_api_rest.dto.UserFullDTO;
 import com.zallpy.bd_api_rest.services.exceptions.ResourceNotFoundException;
 import com.zallpy.bd_api_rest.tests.Factory;
 
+@WebMvcTest(UserController.class)
 public class UserControllerTests {
 
 	@Autowired
@@ -32,11 +35,19 @@ public class UserControllerTests {
 	
 	private UserFullDTO userDto;
 	private Long nonExistingId;
+	private Long dependentId;
+	private User user;
+	private UserFullDTO userFullDTO;
+	private List<UserFullDTO> list;
+
 	@BeforeEach	
 	void setUp() {
 		nonExistingId = 3L;
+		user = Factory.createUser();
 		userDto = Factory.createUserDTO();
-		when(service.findAll()).thenReturn(new ArrayList<>(List.of(userDto)));
+		list = new ArrayList<>(List.of(userDto));
+
+		when(service.findAll()).thenReturn(list);
 		when(service.findById(anyLong())).thenReturn(userDto);
 		when(service.findById(nonExistingId)).thenThrow(ResourceNotFoundException.class);
 	}
