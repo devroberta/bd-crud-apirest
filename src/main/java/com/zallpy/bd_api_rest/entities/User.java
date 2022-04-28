@@ -16,7 +16,6 @@ import org.springframework.hateoas.RepresentationModel;
 import com.zallpy.bd_api_rest.dto.UserFullDTO;
 
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

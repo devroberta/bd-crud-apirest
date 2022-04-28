@@ -1,14 +1,7 @@
 package com.zallpy.bd_api_rest.services;
 
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
-
-import javax.persistence.EntityNotFoundException;
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
 
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
@@ -17,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.zallpy.bd_api_rest.dto.UserFullDTO;
 import com.zallpy.bd_api_rest.entities.User;
 import com.zallpy.bd_api_rest.entities.UserDocuments;
-import com.zallpy.bd_api_rest.entities.enums.OrgaoEmissor;
 import com.zallpy.bd_api_rest.repositories.UserDocumentsRepository;
 import com.zallpy.bd_api_rest.repositories.UserRepository;
 import com.zallpy.bd_api_rest.services.exceptions.ResourceNotFoundException;

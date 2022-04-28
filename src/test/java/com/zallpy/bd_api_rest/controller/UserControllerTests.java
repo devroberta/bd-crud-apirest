@@ -9,7 +9,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.ArrayList;
 import java.util.List;
 
-import com.zallpy.bd_api_rest.entities.User;
 import com.zallpy.bd_api_rest.services.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -35,15 +34,11 @@ public class UserControllerTests {
 	
 	private UserFullDTO userDto;
 	private Long nonExistingId;
-	private Long dependentId;
-	private User user;
-	private UserFullDTO userFullDTO;
 	private List<UserFullDTO> list;
 
 	@BeforeEach	
 	void setUp() {
 		nonExistingId = 3L;
-		user = Factory.createUser();
 		userDto = Factory.createUserDTO();
 		list = new ArrayList<>(List.of(userDto));
 

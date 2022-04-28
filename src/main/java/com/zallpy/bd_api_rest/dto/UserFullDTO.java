@@ -2,7 +2,6 @@ package com.zallpy.bd_api_rest.dto;
 
 import java.io.Serializable;
 
-import net.bytebuddy.implementation.bind.annotation.Empty;
 import org.springframework.hateoas.RepresentationModel;
 
 import com.zallpy.bd_api_rest.entities.User;
