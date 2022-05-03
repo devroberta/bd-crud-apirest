@@ -29,27 +29,27 @@ public class UserFullDTO extends RepresentationModel<User> implements Serializab
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
-	@NotEmpty
+	@NotBlank(message = "Campo obrigatório preenchimento")
 	private String nome;
-	@NotEmpty
+	@NotBlank(message = "Campo obrigatório preenchimento")
 	private String sobrenome;
-	@NotEmpty
-	@Email
+	@NotBlank(message = "Campo obrigatório preenchimento")
+	@Email(message = "Email incorreto")
 	private String email;
-	@NotNull
+	@NotNull(message = "Campo obrigatório preenchimento")
 	private Integer idade;
-	@NotNull
+	@NotNull(message = "Campo requerido")
 	private Boolean ativo;
 
-	@NotEmpty
+	@NotNull(message = "Campo obrigatório preenchimento")
 	private String rg;
-	@NotNull
+	@NotNull(message = "Campo requerido")
 	private OrgaoEmissor orgaoEmissor;
-	@NotNull
+	@NotNull(message = "Campo requerido")
 	private States estado;
-	@NotEmpty
+	@NotNull(message = "Campo obrigatório preenchimento")
 	private String cpf;
-	@NotEmpty
+	@NotNull(message = "Campo obrigatório preenchimento")
 	private String sus;
 	
 	public UserFullDTO(User entity, UserDocuments userDocs) {
