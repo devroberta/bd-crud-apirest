@@ -52,21 +52,6 @@ public class UserFullDTO extends RepresentationModel<User> implements Serializab
 	@NotNull(message = "Campo obrigatório preenchimento")
 	private String sus;
 	
-	public UserFullDTO(User entity, UserDocuments userDocs) {
-		this.id = entity.getId();
-		this.nome = entity.getNome();
-		this.sobrenome = entity.getSobrenome();
-		this.email = entity.getEmail();
-		this.idade = entity.getIdade();
-		this.ativo = entity.getAtivo();
-		
-		this.rg = userDocs.getRg();
-		this.orgaoEmissor = userDocs.getOrgaoEmissor();
-		this.estado = userDocs.getEstado();
-		this.cpf = userDocs.getCpf();
-		this.sus = userDocs.getSus();
-	}
-	
 	public UserFullDTO(User entity) {
 		this.id = entity.getId();
 		this.nome = entity.getNome();

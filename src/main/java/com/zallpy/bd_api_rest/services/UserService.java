@@ -26,14 +26,13 @@ public class UserService {
 	
 	@Transactional(readOnly = true)
 	public List<UserFullDTO> findAll() {
-		return userRepository.findAll().stream().map(x -> new UserFullDTO(x, docRepository.getOne(x.getId())
-				)).collect(Collectors.toList());
+		return userRepository.findAll().stream().map(x -> new UserFullDTO(x))
+				.collect(Collectors.toList());
 	}
 	
 	@Transactional(readOnly = true)
 	public UserFullDTO findById(Long id) {
-		return new UserFullDTO(userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado.")),
-				docRepository.getOne(id));
+		return new UserFullDTO(userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado.")));
 	}
 
 	public UserFullDTO insert(UserFullDTO obj) {
